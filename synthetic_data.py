@@ -4,7 +4,7 @@ import random
 
 fake = Faker()
 
-# Predefined meaningful data
+# Predefined realistic symptom and diagnosis data
 SYMPTOMS_LIST = [
     "fever", "cough", "fatigue", "headache", "shortness of breath",
     "nausea", "chest pain", "dizziness", "sore throat", "rash"
@@ -15,10 +15,12 @@ DIAGNOSIS_LIST = [
     "Hypertension", "Food Poisoning", "Anemia", "Bronchitis", "Allergy"
 ]
 
+# Healthcare data generator
 def generate_healthcare_data(num_records=10):
     data = []
     for _ in range(num_records):
         record = {
+            "Name": fake.name(),
             "Age": random.randint(18, 90),
             "Gender": random.choice(["Male", "Female", "Other"]),
             "Symptoms": ", ".join(random.sample(SYMPTOMS_LIST, 3)),
@@ -27,6 +29,8 @@ def generate_healthcare_data(num_records=10):
         }
         data.append(record)
     return pd.DataFrame(data)
+
+# Finance data generator
 def generate_finance_data(num_records=10):
     data = []
     for _ in range(num_records):
